@@ -1,0 +1,77 @@
+version: "3.3"
+services:
+  balancer:
+    build: ./load-balancer/
+    ports:
+       - "9000:80"
+  apiventa:
+    build: ./
+    ports:
+      - "9001:80"
+    environment:
+      SERVER: "sqlserver"
+      PORT: 1433
+      DATABASE: "AppVentaDb"
+      USERNAME: "sa"
+      PASSWORD: "Channel321*"
+      INTEGRATED_SECURITY: "false"
+      TRUST_SERVER_CERTIFICATE: "true"
+    depends_on:
+      - database
+      - username 
+    links:
+      - "database"
+
+  apiventa2:
+    build: ./
+    ports:
+      - "9002:80"
+    environment:
+      SERVER: "sqlserver"
+      PORT: 1433
+      DATABASE: "AppVentaDb"
+      USERNAME: "sa"
+      PASSWORD: "Channel321*"
+      INTEGRATED_SECURITY: "false"
+      TRUST_SERVER_CERTIFICATE: "true"
+    depends_on:
+      - database
+    links:
+      - "database"
+      - username 
+  
+  apiventa3:
+    build: ./
+    ports:
+      - "9003:80"
+    environment:
+      SERVER: "sqlserver"
+      PORT: 1433
+      DATABASE: "AppVentaDb"
+      USERNAME: "sa"
+      PASSWORD: "Channel321*"
+      INTEGRATED_SECURITY: "false"
+      TRUST_SERVER_CERTIFICATE: "true"
+    depends_on:
+      - database
+      - username 
+    links:
+      - "database"
+
+  apiventa4:
+    build: ./
+    ports:
+      - "9004:80"
+    environment:
+      SERVER: "sqlserver"
+      PORT: 1433
+      DATABASE: "AppVentaDb"
+      USERNAME: "sa"
+      PASSWORD: "Channel321*"
+      INTEGRATED_SECURITY: "false"
+      TRUST_SERVER_CERTIFICATE: "true"
+    depends_on:
+      - database
+      - username 
+    links:
+      - "database"
